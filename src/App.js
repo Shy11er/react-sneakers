@@ -1,32 +1,48 @@
-import Card from "./components/Card";
-import Header from "./components/Header";
-import Drawer from './components/Drawer';
-
-const data = [
-  {title: "Men`s Sneakers Nike Blazer Mid Suede", imageUrl: "nike_blaze_mid", price: '1,999'},
-  {title: "Men`s Sneakers Nike Air Force 1 Low", imageUrl: "nike_air_force_1_low", price: '2,000'},
-  {title: "Men`s Sneakers Nike Jordan 1 Retro", imageUrl: "nike_jordan_1_retro", price: '3,909'},
-  {title: "Men`s Sneakers Nike Air Max 270", imageUrl: "nike_air_max_270", price: '1,800'},
-  {title: "Men`s Sneakers Nike Blazer Mid Suede", imageUrl: "nike_blaze_mid", price: '1,999'},
-  {title: "Men`s Sneakers Nike Air Force 1 Low", imageUrl: "nike_air_force_1_low", price: '2,000'},
-  {title: "Men`s Sneakers Nike Jordan 1 Retro", imageUrl: "nike_jordan_1_retro", price: '3,909'},
-  {title: "Men`s Sneakers Nike Air Max 270", imageUrl: "nike_air_max_270", price: '1,800'},
-]
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import Card from "./components/Card/Card";
+import Header from "./components/Header/Header";
+import Drawer from './components/Drawer/Drawer';
 
 function App() {
+  const [data, setData] = useState([]);
+  const [cartOpened, setCartOpened] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    fetch('https://63c418a0a908563575316ae6.mockapi.io/items')
+    .then((res) => {
+      return res.json();
+    })
+    .then((json) => {
+      setData(json);
+    });
+  }, []);
+
+  const onAddToCart = (obj) => {
+    setCartItems(prev => [...prev, obj]);
+  };
+
+  console.log(cartItems);
+
   return (  
     <div className='wrapper'>
-      {/* <Drawer /> */}
-      <Header />
+      { cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} /> }
+      <Header onCLickCart={() => setCartOpened(true)} />
       <div className="content">
         <div className='content_top'>
           <h1>All Sneakers</h1>
           <input placeholder="Search..." />
         </div>
         <div className='cards'>
-          {/* <Card title="asd" imageUrl={data[0].imageUrl} price={data[0].price} /> */}
-          {data.map((val, index) => {
-            return <Card title={val.title} imageUrl={val.imageUrl} price={val.price} />
+          {data.map((val) => {
+            return <Card 
+              title={val.title} 
+              imageUrl={val.imageUrl} 
+              price={val.price} 
+              onFavourite={() => console.log('first')}
+              onLike={(obj) => onAddToCart(obj)}  
+            />
           })}
         </div>
       </div>
