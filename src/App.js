@@ -1,6 +1,52 @@
 function App() {
-  return (
+  return (  
     <div className='wrapper'>
+      <div className="overlay">
+        <div className="drawer">
+          <h2>Cart</h2>
+          <div className='carts'>
+            <div className='cart_item'>
+              <img src="/assets/nike_blaze_mid.jpg" width={120} height={100} />
+              <div className="cart_item_info">
+                <div className='cart_item_info_left'>
+                  <h4>Men`s sneakers Nike Blazer Mid Suede</h4>
+                  <b>1,099 $</b>
+                </div>
+                <div className="cart_item_info_right">
+                  <img src='/assets/close.svg' width={20} height={20} />
+                </div>
+              </div> 
+            </div>
+
+            <div className='cart_item'>
+              <img src="/assets/nike_blaze_mid.jpg" width={120} height={100} />
+              <div className="cart_item_info">
+                <div className='cart_item_info_left'>
+                  <h4>Men`s sneakers Nike Blazer Mid Suede</h4>
+                  <b>1,099 $</b>
+                </div>
+                <div className="cart_item_info_right">
+                  <img src='/assets/close.svg' width={20} height={20} />
+                </div>
+              </div> 
+            </div>
+
+            <div className='cart_item'>
+              <img src="/assets/nike_blaze_mid.jpg" width={120} height={100} />
+              <div className="cart_item_info">
+                <div className='cart_item_info_left'>
+                  <h4>Men`s sneakers Nike Blazer Mid Suede</h4>
+                  <b>1,099 $</b>
+                </div>
+                <div className="cart_item_info_right">
+                  <img src='/assets/close.svg' width={20} height={20} />
+                </div>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <header>
         <div className='header_left'>
           <img width={70} height={70} src='/assets/logo.jpg' />
@@ -22,9 +68,13 @@ function App() {
         </div>
       </header>
       <div className="content">
-        <h1>All Sneakers</h1>
+        <div className='content_top'>
+          <h1>All Sneakers</h1>
+          <input placeholder="Search..." />
+        </div>
         <div className='cards'>
           <div className="card">
+            <img className='unliked' src='/assets/unliked.svg' width={20} height={20} />
             <img width={140} height={110} src='/assets/nike_blaze_mid.jpg' />
             <h5>Men`s sneakers Nike Blazer Mid Suede</h5>
             <div className="card_info">
@@ -38,6 +88,7 @@ function App() {
             </div>
           </div>
           <div className="card">
+            <img className='unliked' src='/assets/unliked.svg' width={20} height={20} />
             <img width={140} height={110} src='/assets/nike_blaze_mid.jpg' />
             <h5>Men`s sneakers Nike Blazer Mid Suede</h5>
             <div className="card_info">
@@ -51,6 +102,7 @@ function App() {
             </div>
           </div>
           <div className="card">
+            <img className='unliked' src='/assets/unliked.svg' width={20} height={20} />
             <img width={140} height={110} src='/assets/nike_blaze_mid.jpg' />
             <h5>Men`s sneakers Nike Blazer Mid Suede</h5>
             <div className="card_info">
@@ -64,6 +116,7 @@ function App() {
             </div>
           </div>
           <div className="card">
+            <img className='unliked' src='/assets/unliked.svg' width={20} height={20} />
             <img width={140} height={110} src='/assets/nike_blaze_mid.jpg' />
             <h5>Men`s sneakers Nike Blazer Mid Suede</h5>
             <div className="card_info">
