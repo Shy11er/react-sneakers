@@ -18,6 +18,11 @@
       left: 10px; 
       cursor: pointer;
       z-index: 20;
+      transition: all .3s ease;
+
+      &:hover {
+        transform: scale(1.2);
+      }
     }
 
     h5 {
