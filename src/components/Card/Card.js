@@ -11,15 +11,16 @@ const Card = ({ title, imageUrl, price, onFavourite, onLike }) => {
   };
 
   const onClickFavourite = () => {
+    onFavourite({title, imageUrl, price});
     setHeart(!heart);
   }
 
   return (
     <div className={styles.card}>
         <img 
-          onClick={onClickFavourite} 
+          onClick={() => {onClickFavourite()}} 
           className={styles.unliked} 
-          src={`/assets/${ heart == false ? 'unliked' : 'liked'}.svg`} 
+          src={`/assets/${ heart == 0 ? 'unliked' : 'liked'}.svg`} 
           width={20} 
           height={20} 
         />
