@@ -1,6 +1,20 @@
 import styles from './Drawer.module.scss';
+import React from 'react';
 
 const Drawer = ({ onClose, items = []}) => {
+    window.addEventListener('keydown', (ev) => {
+        if (ev.isComposing || ev.keyCode === 27) onClose();
+    });
+
+    // const carts = document.getElementByClassName('carts');
+
+    const removeCartItem = (ind) => {
+        console.log(items);
+        items.splice(ind, 1);
+        console.log(items);
+        // carts.forceUpdate();
+    };
+
     return (
         <div className={styles.overlay}>
             <div className={styles.drawer}>
@@ -11,16 +25,22 @@ const Drawer = ({ onClose, items = []}) => {
                     </div>
                 </div>
                 <div className={styles.carts}>
-                    {items.map((obj) => (
+                    {items.map((val, index) => (
                         <div className={styles.cart_item}>
-                            <img src={`/assets/${obj.imageUrl}.jpg`} width={120} height={100} />
+                            <img src={`/assets/${val.imageUrl}.jpg`} width={120} height={100} />
                             <div className={styles.cart_item_info}>
                                 <div className={styles.cart_item_info_left}>
-                                    <h4>{obj.title}</h4>
-                                    <b>{obj.price} $</b>
+                                    <h4>{val.title}</h4>
+                                    <b>{val.price} $</b>
                                 </div>
                                 <div className={styles.cart_item_info_right}>
-                                    <img className={styles.removeBtn} src='/assets/close.svg' width={20} height={20} />
+                                    <img 
+                                    className={styles.removeBtn} 
+                                    src='/assets/close.svg' 
+                                    width={20} 
+                                    height={20} 
+                                    onClick={() => removeCartItem(index)}
+                                    />
                                 </div>
                             </div> 
                         </div>

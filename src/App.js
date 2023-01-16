@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import Card from "./components/Card/Card";
 import Header from "./components/Header/Header";
 import Drawer from './components/Drawer/Drawer';
@@ -8,6 +7,7 @@ function App() {
   const [data, setData] = useState([]);
   const [cartOpened, setCartOpened] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [sameCarts, setSameCarts] = useState([]);
 
   useEffect(() => {
     fetch('https://63c418a0a908563575316ae6.mockapi.io/items')
@@ -20,10 +20,11 @@ function App() {
   }, []);
 
   const onAddToCart = (obj) => {
+    if (!(sameCarts.includes(obj.title) && sameCarts.includes(obj.imageUrl) && sameCarts.includes(obj.price))) {
+      setSameCarts(prev => [...prev, obj.title, obj.imageUrl, obj.price]);
+    }
     setCartItems(prev => [...prev, obj]);
   };
-
-  console.log(cartItems);
 
   return (  
     <div className='wrapper'>
