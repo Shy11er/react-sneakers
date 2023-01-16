@@ -1,19 +1,15 @@
 import styles from './Drawer.module.scss';
 import React from 'react';
 
-const Drawer = ({ onClose, items = []}) => {
+const Drawer = ({ onClose, items = [], onClickRemove}) => {
     window.addEventListener('keydown', (ev) => {
         if (ev.isComposing || ev.keyCode === 27) onClose();
     });
 
-    // const carts = document.getElementByClassName('carts');
-
-    const removeCartItem = (ind) => {
-        console.log(items);
-        items.splice(ind, 1);
-        console.log(items);
-        // carts.forceUpdate();
-    };
+    // const removeCartItem = (ind) => {
+    //     items.splice(ind, 1);
+    // };
+    let priceAmount = 0;
 
     return (
         <div className={styles.overlay}>
@@ -24,7 +20,14 @@ const Drawer = ({ onClose, items = []}) => {
                         <img  className={styles.closeBtn} src='/assets/close.svg' width={20} height={20} />
                     </div>
                 </div>
-                <div className={styles.carts}>
+
+                {items.length == 0 ? <div className={styles.empty_field}>
+                    <img src='/assets/empty_box.jpg'/>
+                    <h2>Cast is empty</h2>
+                    <p>Add at least one pair of sneakers</p>
+                    <button className={styles.orderBtn} onClick={onClose} >Get Back</button>
+                </div> : 
+                <><div className={styles.carts}>
                     {items.map((val, index) => (
                         <div className={styles.cart_item}>
                             <img src={`/assets/${val.imageUrl}.jpg`} width={120} height={100} />
@@ -35,11 +38,11 @@ const Drawer = ({ onClose, items = []}) => {
                                 </div>
                                 <div className={styles.cart_item_info_right}>
                                     <img 
-                                    className={styles.removeBtn} 
-                                    src='/assets/close.svg' 
-                                    width={20} 
-                                    height={20} 
-                                    onClick={() => removeCartItem(index)}
+                                        className={styles.removeBtn} 
+                                        src='/assets/close.svg' 
+                                        width={20} 
+                                        height={20} 
+                                        onClick={() => onClickRemove(val.id)}
                                     />
                                 </div>
                             </div> 
@@ -51,7 +54,7 @@ const Drawer = ({ onClose, items = []}) => {
                 <li>
                     <span>Total:</span>
                     <div></div>
-                    <b>3,300 $</b>
+                    <b>{priceAmount} $</b>
                 </li>
                 <li>
                     <span>Tax 5%:</span>
@@ -59,7 +62,7 @@ const Drawer = ({ onClose, items = []}) => {
                     <b>50 $</b>
                 </li>
                 </ul>
-                <button className={styles.orderBtn}>ORDER</button>
+                <button className={styles.orderBtn}>Order</button></>}
             </div>
         </div>
     );

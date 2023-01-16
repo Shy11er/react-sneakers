@@ -17,6 +17,7 @@ body {
 
   .content_top {
     width: 100%;
+    position: relative;
     display: flex;
     justify-content: space-between;
     flex-direction: row;  
@@ -24,6 +25,25 @@ body {
 
     h1 {
       margin: 10px 20px;
+    }
+    
+    .search_input{
+      position: absolute;
+      opacity: .5;
+      width: 20px;
+      height: 20px;
+      top: 20px;
+      right: 250px;
+      transform: scaleX(-1);  
+      cursor: pointer;
+    }
+
+    .closeSearch{
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      opacity: .5;
+      cursor: pointer;
     }
 
     input {
@@ -33,7 +53,7 @@ body {
       margin: 10px 20px;
       border: 1px solid rgb(189, 189, 189);
       border-radius: 20px;
-      padding: 10px;
+      padding: 10px 40px;
       font-size: 16px;
       color: #212121;
     }
@@ -43,7 +63,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     margin: 20px 0;
-    justify-content: center;
+    padding: 0 7%;
     align-items: center;
   }
 }

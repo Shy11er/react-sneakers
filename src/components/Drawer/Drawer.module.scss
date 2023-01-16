@@ -10,13 +10,13 @@
     .drawer {
       position: absolute;
       right: 0;
+      top:0;
       display: flex;
       flex-direction: column;
       width: 450px;
       box-sizing: border-box;
       height: 100%;
       background: #fff;
-      top:0;
       padding: 30px;
   
       .cart_header {
@@ -45,6 +45,23 @@
           
         }
       }
+
+      .empty_field{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        // padding: 10px 0;
+        // margin: 15px 0;
+        line-height: 1px;
+        height: 100%;
+        justify-content: center;
+        
+        img {
+          width: 200px;
+  
+        }
+      }
   
       .carts{
         display: flex;
@@ -54,7 +71,7 @@
         padding: 10px 0;
         margin: 15px 0;
         height: 600px !important;
-        overflow-y: scroll;
+        overflow-y: auto;
         overflow-x: hidden;
   
         .cart_item{
