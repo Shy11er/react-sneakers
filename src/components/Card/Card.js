@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './Card.module.scss';
 
-const Card = ({ id, title, imageUrl, price, onFavorite, onLike, favorited=false, added=true }) => {
+const Card = ({ id, title, imageUrl, price, onFavorite, onLike, favorited=false, added=false }) => {
   const [like, setLike] = useState(added);
   const [heart, setHeart] = useState(favorited);
   const obj = { id, title, imageUrl, price };
