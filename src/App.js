@@ -78,6 +78,8 @@ function App() {
         <Routes>
           <Route exact path='/' element={
             <Home 
+              items={items}
+              cartItens={cartItems}
               searchValue={searchValue} 
               setSearchValue={setSearchValue} 
               onChangeSearchInput={onChangeSearchInput}
@@ -88,7 +90,7 @@ function App() {
           />
           <Route exact path='/favorites' element={
             <Favorites 
-              items={favorites}
+              // items={favorites}
               searchValue={searchValue} 
               setSearchValue={setSearchValue} 
               onChangeSearchInput={onChangeSearchInput}

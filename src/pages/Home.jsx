@@ -1,8 +1,9 @@
 import React from 'react';
+import AppContext from '../context';
 
 import Card from "../components/Card/Card";
 
-function Home({ items, cartItems, searchValue, setSearchValue, onChangeSearchInput, onAddToCart, onAddToFavorite, isLoading }) {
+function Home({ items = [], cartItems = [], searchValue, setSearchValue, onChangeSearchInput, onAddToCart, onAddToFavorite, isLoading }) {
 
   const renderItem = () => {
     const filteredItem = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()));
@@ -32,7 +33,6 @@ function Home({ items, cartItems, searchValue, setSearchValue, onChangeSearchInp
         <img className='search_input' src='/assets/search.svg' />
         <input onChange={onChangeSearchInput} placeholder="Search..." value={searchValue} />
       </div>
-      {console.log(cartItems, items)}
       <div className='cards'>
         {renderItem()}
       </div>
