@@ -2,7 +2,27 @@ import React from 'react';
 
 import Card from "../components/Card/Card";
 
-function Home({ items, cartItems, searchValue, setSearchValue, onChangeSearchInput, onAddToCart, onAddToFavorite }) {
+function Home({ items, cartItems, searchValue, setSearchValue, onChangeSearchInput, onAddToCart, onAddToFavorite, isLoading }) {
+
+  const renderItem = () => {
+    const filteredItem = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()));
+
+    return (
+      isLoading 
+      ? [...Array(8)] 
+      : filteredItem)
+      .map((item, index) => {
+        return <Card 
+          key={index}
+          onFavorite={(obj) => onAddToFavorite(obj)}
+          onLike={(obj) => onAddToCart(obj)} 
+          added={cartItems.some((obj) => Number(obj.id) == Number(item.id))}
+          loading={isLoading}
+          {...item}
+        />
+      }
+    )
+  }
 
   return (  
     <div className="content">
@@ -14,17 +34,7 @@ function Home({ items, cartItems, searchValue, setSearchValue, onChangeSearchInp
       </div>
       {console.log(cartItems, items)}
       <div className='cards'>
-        {items
-          .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-          .map((item, index) => {
-            return <Card 
-              key={index}
-              onFavorite={(obj) => onAddToFavorite(obj)}
-              onLike={(obj) => onAddToCart(obj)} 
-              added={cartItems.some((obj) => Number(obj.id) == Number(item.id))}
-              {...item}
-            />
-        })}
+        {renderItem()}
       </div>
     </div>
   );

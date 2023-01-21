@@ -43,23 +43,23 @@
         }
       }
 
-      button {
+      .btn_plus {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 25px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
         outline: none;
         border: none;
         cursor: pointer;
         background: #fff;
         
         img {
-          width: 15px;
+          width: 100%;
         }
       }
       
-      button:hover{
+      .btn_plus:hover{
         transform: scale(1.1  );
       }
     }
