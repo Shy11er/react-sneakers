@@ -1,24 +1,26 @@
 import { useState } from 'react';
 import styles from './Card.module.scss';
 
-const Card = ({ title, imageUrl, price, onFavourite, onLike }) => {
-  const [like, setLike] = useState(false);
-  const [heart, setHeart] = useState(false);
+const Card = ({ id, title, imageUrl, price, onFavorite, onLike, favorited=false, added=true }) => {
+  const [like, setLike] = useState(added);
+  const [heart, setHeart] = useState(favorited);
+  const obj = { id, title, imageUrl, price };
 
   const onClickPlus = () => {
-    onLike({title, imageUrl, price});
+    onLike(obj);
     setLike(!like);
   };
 
-  const onClickFavourite = () => {
-    onFavourite({title, imageUrl, price});
+  const onClickFavorite = () => {
+    onFavorite(obj);
+    // console.log(obj)
     setHeart(!heart);
   }
-
+  
   return (
     <div className={styles.card}>
         <img 
-          onClick={() => {onClickFavourite()}} 
+          onClick={onClickFavorite} 
           className={styles.unliked} 
           src={`/assets/${ heart == 0 ? 'unliked' : 'liked'}.svg`} 
           width={20} 
@@ -32,7 +34,6 @@ const Card = ({ title, imageUrl, price, onFavourite, onLike }) => {
             <b>{price} $</b>       
         </div>
         <button onClick={() => {onClickPlus()}}>
-            {/* { like == 0 ? <img src='/assets/plus.svg' /> : <img src='/assets/check.svg' />} */}
             <img src={`/assets/${like == 0 ? 'plus' : 'check'}.svg`} />
         </button>
         </div>

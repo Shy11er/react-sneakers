@@ -6,9 +6,6 @@ const Drawer = ({ onClose, items = [], onClickRemove}) => {
         if (ev.isComposing || ev.keyCode === 27) onClose();
     });
 
-    // const removeCartItem = (ind) => {
-    //     items.splice(ind, 1);
-    // };
     let priceAmount = 0;
 
     return (
@@ -28,13 +25,13 @@ const Drawer = ({ onClose, items = [], onClickRemove}) => {
                     <button className={styles.orderBtn} onClick={onClose} >Get Back</button>
                 </div> : 
                 <><div className={styles.carts}>
-                    {items.map((val, index) => (
-                        <div className={styles.cart_item}>
-                            <img src={`/assets/${val.imageUrl}.jpg`} width={120} height={100} />
+                    {items.map((obj) => (
+                        <div key={obj.id} className={styles.cart_item}>
+                            <img src={`/assets/${obj.imageUrl}.jpg`} width={120} height={100} />
                             <div className={styles.cart_item_info}>
                                 <div className={styles.cart_item_info_left}>
-                                    <h4>{val.title}</h4>
-                                    <b>{val.price} $</b>
+                                    <h4>{obj.title}</h4>
+                                    <b>{obj.price} $</b>
                                 </div>
                                 <div className={styles.cart_item_info_right}>
                                     <img 
@@ -42,8 +39,9 @@ const Drawer = ({ onClose, items = [], onClickRemove}) => {
                                         src='/assets/close.svg' 
                                         width={20} 
                                         height={20} 
-                                        onClick={() => onClickRemove(val.id)}
+                                        onClick={() => onClickRemove(obj.id)}
                                     />
+                                    {console.log(obj.id)}
                                 </div>
                             </div> 
                         </div>
