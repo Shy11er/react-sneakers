@@ -55,8 +55,8 @@ const Drawer = ({ onClose, items = [], onClickRemove, opened}) => {
                 {items.length > 0 
                   ? 
                     <><div className={styles.carts}>
-                        {items.map((obj) => (
-                            <div key={obj.id} className={styles.cart_item}>
+                        {items.map((obj, index) => (
+                            <div key={index} className={styles.cart_item}>
                                 <img src={`/assets/${obj.imageUrl}.jpg`} width={120} height={100} />
                                 <div className={styles.cart_item_info}>
                                     <div className={styles.cart_item_info_left}>
