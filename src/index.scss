@@ -96,10 +96,6 @@ body {
 }
 
 .orderBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
   min-width: 350px;
   cursor: pointer;
   height: 70px;
@@ -107,10 +103,9 @@ body {
   font-weight: 600;
   background: #9dd458;
   color: #fff;
-  outline: none;
   border: none;
   border-radius: 20px;
-  transition: all .3s ease;
+  transition: opacity, transform .3s ease;
   margin: 20px 0;
 
   &:disabled {

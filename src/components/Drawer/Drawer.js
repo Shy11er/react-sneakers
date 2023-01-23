@@ -8,7 +8,7 @@ import { useCart } from '../../hooks/useCart';
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const Drawer = ({ onClose, items = [], onClickRemove}) => {
+const Drawer = ({ onClose, items = [], onClickRemove, opened}) => {
     const [orderId, setOrderId] = React.useState(null);
     const [isOrderComplete, setIsOrderConplete] = React.useState(false);
     const [isLoaded, setIsLoaded] = React.useState(false)
@@ -43,7 +43,7 @@ const Drawer = ({ onClose, items = [], onClickRemove}) => {
     const priceAmount = items.reduce((prev, obj) => obj.price + prev, 0);
 
     return (
-        <div className={styles.overlay}>
+        <div className={`${styles.overlay} ${opened ? styles.overlayVisible : ""} `} >
             <div className={styles.drawer}>
                 <div className={styles.cart_header}>
                     <h2>Cart</h2>
