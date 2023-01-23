@@ -12,7 +12,7 @@ function Home({ items = [], searchValue, setSearchValue, onChangeSearchInput, on
       ? [...Array(8)] 
       : filteredItem)
       .map((item, index) => {
-        return <Card 
+        return <Caasdrd 
           key={index}
           onFavorite={(obj) => onAddToFavorite(obj)}
           onLike={(obj) => onAddToCart(obj)}

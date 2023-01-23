@@ -71,7 +71,6 @@ const Drawer = ({ onClose, items = [], onClickRemove, opened}) => {
                                             height={20} 
                                             onClick={() => onClickRemove(obj.id)}
                                         />
-                                        {console.log(obj.id)}
                                     </div>
                                 </div> 
                             </div>
