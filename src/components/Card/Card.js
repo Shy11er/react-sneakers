@@ -18,7 +18,7 @@ function Card ({
   const { isItemAdded } = useContext(AppContext);
   
   const [heart, setHeart] = useState(favorited);
-  const obj = { id, title, imageUrl, price };
+  const obj = { id, parentId: id, title, imageUrl, price };
 
   const onClickPlus = () => {
     onLike(obj);
@@ -26,7 +26,6 @@ function Card ({
 
   const onClickFavorite = () => {
     onFavorite(obj);
-    // console.log(obj)
     setHeart(!heart);
   }
   
