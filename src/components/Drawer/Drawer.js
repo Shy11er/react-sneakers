@@ -1,17 +1,18 @@
 import React from 'react';
 import axios from 'axios';
-import AppContext from '../../context';
 
 import styles from './Drawer.module.scss';
 import Info from '../info';
 
+import { useCart } from '../../hooks/useCart';
+
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const Drawer = ({ onClose, items = [], onClickRemove}) => {
-    const {cartItems, setCartItems} = React.useContext(AppContext);
     const [orderId, setOrderId] = React.useState(null);
     const [isOrderComplete, setIsOrderConplete] = React.useState(false);
     const [isLoaded, setIsLoaded] = React.useState(false)
+    const { cartItems, setCartItems, totalPrice } = useCart();
 
     const onCLickOrder = async () => {
         try {
@@ -39,7 +40,7 @@ const Drawer = ({ onClose, items = [], onClickRemove}) => {
         if (ev.isComposing || ev.keyCode === 27) onClose();
     });
 
-    let priceAmount = 0;
+    const priceAmount = items.reduce((prev, obj) => obj.price + prev, 0);
 
     return (
         <div className={styles.overlay}>
@@ -85,7 +86,7 @@ const Drawer = ({ onClose, items = [], onClickRemove}) => {
                     <li>
                         <span>Tax 5%:</span>
                         <div></div>
-                        <b>50 $</b>
+                        <b>{priceAmount / 100 * 5} $</b>
                     </li>
                     </ul>
                     <button disabled={isLoaded} onClick={onCLickOrder} className='orderBtn'>Order</button></>
