@@ -86,7 +86,7 @@ const Drawer = ({ onClose, items = [], onClickRemove}) => {
                     <li>
                         <span>Tax 5%:</span>
                         <div></div>
-                        <b>{priceAmount / 100 * 5} $</b>
+                        <b>{(priceAmount / 100 * 5).toFixed(2)} $</b>
                     </li>
                     </ul>
                     <button disabled={isLoaded} onClick={onCLickOrder} className='orderBtn'>Order</button></>

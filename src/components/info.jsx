@@ -1,12 +1,12 @@
 import React from 'react';
 import AppContext from '../context';
 
-const Info = ({image, text, title, favoritePage=false }) => {
+const Info = ({image, text, title, toMainPage=false }) => {
   const { setCartOpened } = React.useContext(AppContext);
 
   const onBtn = () => {
     setCartOpened(false);
-    if (favoritePage) window.location.href = 'http://localhost:3000/';
+    if ( toMainPage ) window.location.href = 'http://localhost:3000/';
   }
 
   return (

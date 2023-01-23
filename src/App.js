@@ -8,6 +8,7 @@ import Drawer from './components/Drawer/Drawer';
 
 import Home from './pages/Home';
 import Favorites from './pages/Favorites';
+import Orders from './pages/Orders';
 
 import AppContext from './context';
 
@@ -24,7 +25,7 @@ function App() {
       const cartsResponse = await axios.get("https://63c418a0a908563575316ae6.mockapi.io/carts");
       const favoritesResponse = await axios.get("https://63c418a0a908563575316ae6.mockapi.io/favourites");
       const data_items = await require('./dataFav.json');
-
+     
       setIsLoading(false);
 
       setFavorites(favoritesResponse.data);
@@ -75,7 +76,7 @@ function App() {
   }
 
   return (  
-    <AppContext.Provider value={{items, cartItems, favorites, isItemAdded, onAddToFavorite, setCartItems, setCartOpened}}>
+    <AppContext.Provider value={{items, cartItems, favorites, isItemAdded, onAddToFavorite, setCartItems, setCartOpened, onAddToCart}}>
       <div className='wrapper'>
         { cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} onClickRemove={onRemoveCastItem}/> }
         <Header onCLickCart={() => setCartOpened(true)} />
@@ -94,6 +95,9 @@ function App() {
           />
           <Route exact path='/favorites' element={
             <Favorites />} 
+          />
+          <Route exact path='/orders' element={
+            <Orders />} 
           />
         </Routes>
       </div>

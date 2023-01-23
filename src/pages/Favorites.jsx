@@ -32,7 +32,7 @@ const Favorites = () => {
             title={"You have empty bookmark :("} 
             image={"tired"} 
             text={"You add nothing in bookmark "}
-            favoritePage
+            toMainPage
             />
         </>
     }
